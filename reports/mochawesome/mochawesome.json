@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-06T02:15:07.870Z",
+    "end": "2025-12-06T02:15:16.395Z",
+    "duration": 8525,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "76357e08-39bf-4851-937a-82049e191265",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cart.cy.js",
+      "file": "cypress\\e2e\\cart.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+          "title": "Cart operations (TC04–TC06)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC04: Add to Cart single item + verify cart",
+              "fullTitle": "Cart operations (TC04–TC06) TC04: Add to Cart single item + verify cart",
+              "timedOut": null,
+              "duration": 4495,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const item = 'Sauce Labs Backpack';\n_InventoryPage.default.addToCartByName(item);\n_InventoryPage.default.cartBadge().should('have.text', '1');\n_InventoryPage.default.goToCart();\ncy.url().should('include', '/cart.html');\n_CartPage.default.itemNames().should('contain.text', item);\n// Back, ensure button toggled to Remove\ncy.go('back');\ncy.contains('.inventory_item', item).within(() => {\n  cy.contains('button', 'Remove').should('be.visible');\n});",
+              "err": {},
+              "uuid": "5a74c374-b74b-4072-af1c-50b74c6891cd",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC05: Remove Item from Cart",
+              "fullTitle": "Cart operations (TC04–TC06) TC05: Remove Item from Cart",
+              "timedOut": null,
+              "duration": 1939,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const item = 'Sauce Labs Backpack';\n_InventoryPage.default.addToCartByName(item);\n_InventoryPage.default.removeByName(item);\n// badge disappears when 0 items\n_InventoryPage.default.cartBadge().should('not.exist');\n_InventoryPage.default.goToCart();\n_CartPage.default.items().should('have.length', 0);\n// back on inventory, button returns to Add to cart\ncy.go('back');\ncy.contains('.inventory_item', item).within(() => {\n  cy.contains('button', 'Add to cart').should('be.visible');\n});",
+              "err": {},
+              "uuid": "e40fc12d-e765-4f8a-85df-8c9349714426",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC06: Add multiple items + verify counts",
+              "fullTitle": "Cart operations (TC04–TC06) TC06: Add multiple items + verify counts",
+              "timedOut": null,
+              "duration": 1817,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const items = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt'];\nitems.forEach(name => _InventoryPage.default.addToCartByName(name));\n_InventoryPage.default.cartBadge().should('have.text', String(items.length));\n_InventoryPage.default.goToCart();\n_CartPage.default.itemNames().then($names => {\n  const texts = [...$names].map(n => n.innerText.trim());\n  items.forEach(i => expect(texts).to.include(i));\n  expect(texts).to.have.length(items.length);\n});",
+              "err": {},
+              "uuid": "b875b105-07cb-4af8-82a7-6fdfdedde90a",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a74c374-b74b-4072-af1c-50b74c6891cd",
+            "e40fc12d-e765-4f8a-85df-8c9349714426",
+            "b875b105-07cb-4af8-82a7-6fdfdedde90a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8251,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

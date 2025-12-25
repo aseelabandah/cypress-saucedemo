@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-06T02:15:28.307Z",
+    "end": "2025-12-06T02:15:31.910Z",
+    "duration": 3603,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eaba49d4-dfd2-4eff-9c27-d83e1757eb73",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC01: success with valid credentials",
+              "fullTitle": "Login TC01: success with valid credentials",
+              "timedOut": null,
+              "duration": 2348,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('users').then(({\n  valid\n}) => {\n  cy.login(valid.username, valid.password);\n  cy.url().should('include', '/inventory.html');\n  _InventoryPage.default.productGrid().should('be.visible');\n  _InventoryPage.default.title().should('have.text', 'Products');\n});",
+              "err": {},
+              "uuid": "8fa980cb-2257-4d50-b1df-5fdb639c088d",
+              "parentUUID": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC02: failure with invalid credentials (negative)",
+              "fullTitle": "Login TC02: failure with invalid credentials (negative)",
+              "timedOut": null,
+              "duration": 1126,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('users').then(({\n  invalid\n}) => {\n  _LoginPage.default.fillUsername(invalid.username);\n  _LoginPage.default.fillPassword(invalid.password);\n  _LoginPage.default.submit();\n  _LoginPage.default.getError().should('be.visible');\n  cy.url().should('not.include', '/inventory.html');\n  _LoginPage.default.getError().should('contain.text', 'Username and password do not match');\n});",
+              "err": {},
+              "uuid": "5ee0a148-d2b6-451b-84f8-7079efb8033d",
+              "parentUUID": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8fa980cb-2257-4d50-b1df-5fdb639c088d",
+            "5ee0a148-d2b6-451b-84f8-7079efb8033d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3474,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

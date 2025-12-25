@@ -1,0 +1,412 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 11,
+    "passes": 11,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 11,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-12-06T02:15:07.870Z",
+    "end": "2025-12-06T02:15:40.032Z",
+    "duration": 32162
+  },
+  "results": [
+    {
+      "uuid": "e9af1345-0488-4f65-9372-e589bfdf595f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\checkout.cy.js",
+      "file": "cypress\\e2e\\checkout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+          "title": "Checkout Flow (TC07–TC08)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC07: Checkout information & overview page",
+              "fullTitle": "Checkout Flow (TC07–TC08) TC07: Checkout information & overview page",
+              "timedOut": null,
+              "duration": 3877,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_CartPage.default.checkout();\n_CheckoutPage.default.fillInfo('Aseel', 'Abandah', '42103');\n_CheckoutPage.default.continue();\n// Overview page\ncy.url().should('include', '/checkout-step-two.html');\ncy.get('.cart_item').should('have.length.greaterThan', 0);\nconst totals = _CheckoutPage.default.overviewTotals();\ntotals.itemTotal.should('be.visible');\ntotals.tax.should('be.visible');\ntotals.total.should('be.visible');\ncy.get('[data-test=\"finish\"]').should('be.visible');",
+              "err": {},
+              "uuid": "cd89272d-719c-4b43-a0ba-bf6b1136e756",
+              "parentUUID": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC08: Finish order successfully",
+              "fullTitle": "Checkout Flow (TC07–TC08) TC08: Finish order successfully",
+              "timedOut": null,
+              "duration": 2781,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_CartPage.default.checkout();\n_CheckoutPage.default.fillInfo('Aseel', 'Abandah', '42103');\n_CheckoutPage.default.continue();\n_CheckoutPage.default.finish();\n_CheckoutPage.default.completeHeader().should('contain.text', 'Thank you for your order!');\ncy.get('[data-test=\"back-to-products\"]').should('be.visible');",
+              "err": {},
+              "uuid": "9465c9ca-375b-495e-b896-9cafafd0c8d2",
+              "parentUUID": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cd89272d-719c-4b43-a0ba-bf6b1136e756",
+            "9465c9ca-375b-495e-b896-9cafafd0c8d2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6658,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "eaba49d4-dfd2-4eff-9c27-d83e1757eb73",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC01: success with valid credentials",
+              "fullTitle": "Login TC01: success with valid credentials",
+              "timedOut": null,
+              "duration": 2348,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('users').then(({\n  valid\n}) => {\n  cy.login(valid.username, valid.password);\n  cy.url().should('include', '/inventory.html');\n  _InventoryPage.default.productGrid().should('be.visible');\n  _InventoryPage.default.title().should('have.text', 'Products');\n});",
+              "err": {},
+              "uuid": "8fa980cb-2257-4d50-b1df-5fdb639c088d",
+              "parentUUID": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC02: failure with invalid credentials (negative)",
+              "fullTitle": "Login TC02: failure with invalid credentials (negative)",
+              "timedOut": null,
+              "duration": 1126,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('users').then(({\n  invalid\n}) => {\n  _LoginPage.default.fillUsername(invalid.username);\n  _LoginPage.default.fillPassword(invalid.password);\n  _LoginPage.default.submit();\n  _LoginPage.default.getError().should('be.visible');\n  cy.url().should('not.include', '/inventory.html');\n  _LoginPage.default.getError().should('contain.text', 'Username and password do not match');\n});",
+              "err": {},
+              "uuid": "5ee0a148-d2b6-451b-84f8-7079efb8033d",
+              "parentUUID": "91d78aae-8e6b-4a5d-b13d-ff18bb505f1d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8fa980cb-2257-4d50-b1df-5fdb639c088d",
+            "5ee0a148-d2b6-451b-84f8-7079efb8033d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3474,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1e565412-0238-4595-9300-9e6dde4e2370",
+      "title": "",
+      "fullFile": "cypress\\e2e\\sorting.cy.js",
+      "file": "cypress\\e2e\\sorting.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+          "title": "Inventory sorting (TC03)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Name (A to Z)",
+              "fullTitle": "Inventory sorting (TC03) Name (A to Z)",
+              "timedOut": null,
+              "duration": 1707,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Name (A to Z)');\nassertSorted('.inventory_item_name', (a, b) => a.localeCompare(b));",
+              "err": {},
+              "uuid": "77ae7b1c-283b-4f6e-8887-b3bdd73808cd",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Name (Z to A)",
+              "fullTitle": "Inventory sorting (TC03) Name (Z to A)",
+              "timedOut": null,
+              "duration": 1387,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Name (Z to A)');\nassertSorted('.inventory_item_name', (a, b) => b.localeCompare(a));",
+              "err": {},
+              "uuid": "43e637dc-3a8c-43f1-b6df-d112fce67466",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Price (low to high)",
+              "fullTitle": "Inventory sorting (TC03) Price (low to high)",
+              "timedOut": null,
+              "duration": 1253,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Price (low to high)');\ncy.get('.inventory_item_price').then($els => {\n  const nums = [...$els].map(el => Number(el.innerText.replace('$', '')));\n  const sorted = [...nums].sort((a, b) => a - b);\n  expect(nums).to.deep.equal(sorted);\n});",
+              "err": {},
+              "uuid": "f9ad6d2b-db81-4dbd-a7c0-b64faa6dd377",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Price (high to low)",
+              "fullTitle": "Inventory sorting (TC03) Price (high to low)",
+              "timedOut": null,
+              "duration": 1262,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Price (high to low)');\ncy.get('.inventory_item_price').then($els => {\n  const nums = [...$els].map(el => Number(el.innerText.replace('$', '')));\n  const sorted = [...nums].sort((a, b) => b - a);\n  expect(nums).to.deep.equal(sorted);\n});",
+              "err": {},
+              "uuid": "954b6137-121e-4ca6-96a3-fe90167eb562",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "77ae7b1c-283b-4f6e-8887-b3bdd73808cd",
+            "43e637dc-3a8c-43f1-b6df-d112fce67466",
+            "f9ad6d2b-db81-4dbd-a7c0-b64faa6dd377",
+            "954b6137-121e-4ca6-96a3-fe90167eb562"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5609,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "76357e08-39bf-4851-937a-82049e191265",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cart.cy.js",
+      "file": "cypress\\e2e\\cart.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+          "title": "Cart operations (TC04–TC06)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC04: Add to Cart single item + verify cart",
+              "fullTitle": "Cart operations (TC04–TC06) TC04: Add to Cart single item + verify cart",
+              "timedOut": null,
+              "duration": 4495,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const item = 'Sauce Labs Backpack';\n_InventoryPage.default.addToCartByName(item);\n_InventoryPage.default.cartBadge().should('have.text', '1');\n_InventoryPage.default.goToCart();\ncy.url().should('include', '/cart.html');\n_CartPage.default.itemNames().should('contain.text', item);\n// Back, ensure button toggled to Remove\ncy.go('back');\ncy.contains('.inventory_item', item).within(() => {\n  cy.contains('button', 'Remove').should('be.visible');\n});",
+              "err": {},
+              "uuid": "5a74c374-b74b-4072-af1c-50b74c6891cd",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC05: Remove Item from Cart",
+              "fullTitle": "Cart operations (TC04–TC06) TC05: Remove Item from Cart",
+              "timedOut": null,
+              "duration": 1939,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const item = 'Sauce Labs Backpack';\n_InventoryPage.default.addToCartByName(item);\n_InventoryPage.default.removeByName(item);\n// badge disappears when 0 items\n_InventoryPage.default.cartBadge().should('not.exist');\n_InventoryPage.default.goToCart();\n_CartPage.default.items().should('have.length', 0);\n// back on inventory, button returns to Add to cart\ncy.go('back');\ncy.contains('.inventory_item', item).within(() => {\n  cy.contains('button', 'Add to cart').should('be.visible');\n});",
+              "err": {},
+              "uuid": "e40fc12d-e765-4f8a-85df-8c9349714426",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC06: Add multiple items + verify counts",
+              "fullTitle": "Cart operations (TC04–TC06) TC06: Add multiple items + verify counts",
+              "timedOut": null,
+              "duration": 1817,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const items = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt'];\nitems.forEach(name => _InventoryPage.default.addToCartByName(name));\n_InventoryPage.default.cartBadge().should('have.text', String(items.length));\n_InventoryPage.default.goToCart();\n_CartPage.default.itemNames().then($names => {\n  const texts = [...$names].map(n => n.innerText.trim());\n  items.forEach(i => expect(texts).to.include(i));\n  expect(texts).to.have.length(items.length);\n});",
+              "err": {},
+              "uuid": "b875b105-07cb-4af8-82a7-6fdfdedde90a",
+              "parentUUID": "eaadb604-a667-44aa-aa86-2f07b054dda3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a74c374-b74b-4072-af1c-50b74c6891cd",
+            "e40fc12d-e765-4f8a-85df-8c9349714426",
+            "b875b105-07cb-4af8-82a7-6fdfdedde90a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8251,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

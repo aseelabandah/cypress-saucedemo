@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-06T02:15:34.270Z",
+    "end": "2025-12-06T02:15:40.032Z",
+    "duration": 5762,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1e565412-0238-4595-9300-9e6dde4e2370",
+      "title": "",
+      "fullFile": "cypress\\e2e\\sorting.cy.js",
+      "file": "cypress\\e2e\\sorting.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+          "title": "Inventory sorting (TC03)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Name (A to Z)",
+              "fullTitle": "Inventory sorting (TC03) Name (A to Z)",
+              "timedOut": null,
+              "duration": 1707,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Name (A to Z)');\nassertSorted('.inventory_item_name', (a, b) => a.localeCompare(b));",
+              "err": {},
+              "uuid": "77ae7b1c-283b-4f6e-8887-b3bdd73808cd",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Name (Z to A)",
+              "fullTitle": "Inventory sorting (TC03) Name (Z to A)",
+              "timedOut": null,
+              "duration": 1387,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Name (Z to A)');\nassertSorted('.inventory_item_name', (a, b) => b.localeCompare(a));",
+              "err": {},
+              "uuid": "43e637dc-3a8c-43f1-b6df-d112fce67466",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Price (low to high)",
+              "fullTitle": "Inventory sorting (TC03) Price (low to high)",
+              "timedOut": null,
+              "duration": 1253,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Price (low to high)');\ncy.get('.inventory_item_price').then($els => {\n  const nums = [...$els].map(el => Number(el.innerText.replace('$', '')));\n  const sorted = [...nums].sort((a, b) => a - b);\n  expect(nums).to.deep.equal(sorted);\n});",
+              "err": {},
+              "uuid": "f9ad6d2b-db81-4dbd-a7c0-b64faa6dd377",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Price (high to low)",
+              "fullTitle": "Inventory sorting (TC03) Price (high to low)",
+              "timedOut": null,
+              "duration": 1262,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_InventoryPage.default.sortSelect().select('Price (high to low)');\ncy.get('.inventory_item_price').then($els => {\n  const nums = [...$els].map(el => Number(el.innerText.replace('$', '')));\n  const sorted = [...nums].sort((a, b) => b - a);\n  expect(nums).to.deep.equal(sorted);\n});",
+              "err": {},
+              "uuid": "954b6137-121e-4ca6-96a3-fe90167eb562",
+              "parentUUID": "18df038f-f69f-4c60-a482-b3a07a2b6071",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "77ae7b1c-283b-4f6e-8887-b3bdd73808cd",
+            "43e637dc-3a8c-43f1-b6df-d112fce67466",
+            "f9ad6d2b-db81-4dbd-a7c0-b64faa6dd377",
+            "954b6137-121e-4ca6-96a3-fe90167eb562"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5609,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

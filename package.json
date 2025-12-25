@@ -1,0 +1,27 @@
+{
+  "name": "cypress-demo-automation--saucedemo.com",
+  "version": "1.0.0",
+  "description": "Cypress Automation project demo",
+  "main": "index.js",
+  "scripts": {
+     "clean:reports": "rimraf reports || true",
+    "test": "npm run clean:reports && cypress run --reporter mochawesome --reporter-options reportDir=reports/mochawesome,overwrite=false,html=false,json=true",
+    "report:merge": "mochawesome-merge reports/mochawesome/*.json > reports/mochawesome.json",
+    "report:html": "marge reports/mochawesome.json -f index -o reports/html",
+    "report": "npm run report:merge && npm run report:html",
+    "open": "cypress open"
+  },
+  "author": "Aseel Abendeh",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^15.6.0"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.1.2"
+  }
+
+}
+

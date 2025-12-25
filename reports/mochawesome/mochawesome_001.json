@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-06T02:15:18.816Z",
+    "end": "2025-12-06T02:15:25.626Z",
+    "duration": 6810,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e9af1345-0488-4f65-9372-e589bfdf595f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\checkout.cy.js",
+      "file": "cypress\\e2e\\checkout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+          "title": "Checkout Flow (TC07–TC08)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC07: Checkout information & overview page",
+              "fullTitle": "Checkout Flow (TC07–TC08) TC07: Checkout information & overview page",
+              "timedOut": null,
+              "duration": 3877,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_CartPage.default.checkout();\n_CheckoutPage.default.fillInfo('Aseel', 'Abandah', '42103');\n_CheckoutPage.default.continue();\n// Overview page\ncy.url().should('include', '/checkout-step-two.html');\ncy.get('.cart_item').should('have.length.greaterThan', 0);\nconst totals = _CheckoutPage.default.overviewTotals();\ntotals.itemTotal.should('be.visible');\ntotals.tax.should('be.visible');\ntotals.total.should('be.visible');\ncy.get('[data-test=\"finish\"]').should('be.visible');",
+              "err": {},
+              "uuid": "cd89272d-719c-4b43-a0ba-bf6b1136e756",
+              "parentUUID": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC08: Finish order successfully",
+              "fullTitle": "Checkout Flow (TC07–TC08) TC08: Finish order successfully",
+              "timedOut": null,
+              "duration": 2781,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_CartPage.default.checkout();\n_CheckoutPage.default.fillInfo('Aseel', 'Abandah', '42103');\n_CheckoutPage.default.continue();\n_CheckoutPage.default.finish();\n_CheckoutPage.default.completeHeader().should('contain.text', 'Thank you for your order!');\ncy.get('[data-test=\"back-to-products\"]').should('be.visible');",
+              "err": {},
+              "uuid": "9465c9ca-375b-495e-b896-9cafafd0c8d2",
+              "parentUUID": "b4cd1ae7-e744-4508-ab10-2c7d6e480e06",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cd89272d-719c-4b43-a0ba-bf6b1136e756",
+            "9465c9ca-375b-495e-b896-9cafafd0c8d2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6658,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
