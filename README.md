@@ -12,7 +12,7 @@ It is designed as a **portfolio project** to demonstrate real-world test automat
 
 ---
 
-## 🎯 Test Coverage
+##  Test Coverage
 - **TC01:** Login – success with valid credentials  
 - **TC02:** Login – failure with invalid credentials  
 - **TC03:** Inventory sorting  
@@ -28,7 +28,7 @@ It is designed as a **portfolio project** to demonstrate real-world test automat
 
 ---
 
-## 🧱 Framework & Architecture
+##  Framework & Architecture
 ```text
 cypress/
 ├── e2e/          # Test specifications
